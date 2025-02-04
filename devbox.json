@@ -1,0 +1,9 @@
+{
+  "packages": [
+    "go@1.23.4"
+  ],
+  "env": {
+    "GOPATH": "$PWD",
+    "PATH": "$PATH:$PWD/bin"
+  }
+}

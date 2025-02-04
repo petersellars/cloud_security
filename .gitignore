@@ -1,0 +1,10 @@
+# Devbox Environment
+.devbox
+
+# Score Compose
+bin/score-compose
+.score-compose
+compose.yaml
+
+# Go
+pkg

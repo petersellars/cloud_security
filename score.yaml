@@ -1,0 +1,55 @@
+apiVersion: score.dev/v1b1
+
+metadata:
+  name: prowler
+
+containers:
+  api:
+    image: prowlercloud/prowler-api:${PROWLER_API_VERSION:-stable}
+    variables:
+      PROWLER_API_VERSION: ${resources.env.PROWLER_API_VERSION}
+
+  ui:
+    image: prowlercloud/prowler-ui:${PROWLER_UI_VERSION:-stable}
+    variables:
+      PROWLER_UI_VERSION: ${resources.env.PROWLER_UI_VERSION}
+
+  # postgres:
+  #   image: postgres:16.3-alpine3.20
+
+  valkey:
+    image: valkey/valkey:7-alpine3.19
+
+  worker:
+    image: prowlercloud/prowler-api:${PROWLER_API_VERSION:-stable}
+    variables:
+      PROWLER_API_VERSION: ${resources.env.PROWLER_API_VERSION}
+
+  worker-beat:
+    image: prowlercloud/prowler-api:${PROWLER_API_VERSION:-stable}
+    variables:
+      PROWLER_API_VERSION: ${resources.env.PROWLER_API_VERSION}
+
+resources:
+  env:
+    type: environment
+
+  db:
+    type: postgres
+
+  # api:
+  #   hostname: "prowler-api"
+  #   image: prowlercloud/prowler-api:${PROWLER_API_VERSION:-stable}
+  #   env_file:
+  #     - path: .env
+  #       required: false
+  #   ports:
+  #     - "${DJANGO_PORT:-8080}:${DJANGO_PORT:-8080}"
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+  #     valkey:
+  #       condition: service_healthy
+  #   entrypoint:
+  #     - "/home/prowler/docker-entrypoint.sh"
+  #     - "prod"
