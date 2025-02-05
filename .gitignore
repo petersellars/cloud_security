@@ -5,6 +5,9 @@
 .score-compose
 compose.yaml
 
+# Score K8s
+.score-k8s
+
 # Go
 bin
 pkg
