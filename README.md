@@ -1,5 +1,11 @@
 # Cloud Security
 
+## Expose a Port to the host using `-publish`
+
+```
+score-compose generate score.yaml --publish 3000:prowler:3000
+```
+
 ## Install Score
 
 ### score-commpose
