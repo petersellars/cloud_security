@@ -11,13 +11,23 @@ containers:
 
   ui:
     image: prowlercloud/prowler-ui:${PROWLER_UI_VERSION:-stable}
-    # variables:
-    #   PROWLER_UI_VERSION: ${resources.env.PROWLER_UI_VERSION}
 
 service:
   ports:
-    www:
+    tcp:
       port: 3000
+      targetPort: 3000
+
+# resources:
+#   dns:
+#     type: dns
+#   route:
+#     type: route
+#     params:
+#       host: ${resources.dns.host}
+#       path: /
+#       port: 8080
+
 
   # postgres:
   #   image: postgres:16.3-alpine3.20
