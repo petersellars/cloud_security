@@ -2,6 +2,10 @@
 
 ## Expose a Port to the host using `-publish`
 
+Prowler App and API are two seperate workloads.
+Prowler App is the Frontend
+Prowler API is the Backend - Needs DB
+
 ```
 score-compose generate score.yaml --publish 3000:prowler:3000
 ```

@@ -4,19 +4,20 @@ metadata:
   name: prowler
 
 containers:
-  # api:
-  #   image: prowlercloud/prowler-api:${PROWLER_API_VERSION:-stable}
-  #   variables:
-  #     PROWLER_API_VERSION: ${resources.env.PROWLER_API_VERSION}
+  api:
+    image: prowlercloud/prowler-api:${PROWLER_API_VERSION:-stable}
 
-  ui:
-    image: prowlercloud/prowler-ui:${PROWLER_UI_VERSION:-stable}
+  # ui:
+  #   image: prowlercloud/prowler-ui:${PROWLER_UI_VERSION:-stable}
 
 service:
   ports:
-    tcp:
-      port: 3000
-      targetPort: 3000
+    api:
+      port: 8080
+      targetPort: 8080
+    # ui:
+    #   port: 3000
+    #   targetPort: 3000
 
 # resources:
 #   dns:
